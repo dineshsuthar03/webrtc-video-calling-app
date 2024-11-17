@@ -1,0 +1,86 @@
+/* Add these styles to a new file called static/css/styles.css */
+.mirror {
+    transform: scaleX(-1);
+}
+
+.video-container {
+    position: relative;
+    background: #1a1a1a;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.video-container::before {
+    content: '';
+    display: block;
+    padding-top: 56.25%; /* 16:9 Aspect Ratio */
+}
+
+.video-container video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.controls button {
+    transition: all 0.2s ease-in-out;
+}
+
+.controls button:hover {
+    transform: scale(1.1);
+}
+
+.controls button:active {
+    transform: scale(0.95);
+}
+
+#chatMessages::-webkit-scrollbar {
+    width: 6px;
+}
+
+#chatMessages::-webkit-scrollbar-track {
+    background: #2d3748;
+}
+
+#chatMessages::-webkit-scrollbar-thumb {
+    background: #4a5568;
+    border-radius: 3px;
+}
+
+#chatMessages::-webkit-scrollbar-thumb:hover {
+    background: #718096;
+}
+
+@media (max-width: 768px) {
+    .video-container {
+        height: 40vh;
+    }
+}
+
+.participant-name {
+    position: absolute;
+    bottom: 1rem;
+    left: 1rem;
+    background: rgba(0, 0, 0, 0.5);
+    padding: 0.25rem 0.75rem;
+    border-radius: 9999px;
+    color: white;
+    font-size: 0.875rem;
+}
+
+.notification {
+    animation: slideIn 0.3s ease-out forwards;
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+} 

@@ -1,0 +1,124 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WebRTC Video Meeting</title>
+</head>
+<body>
+    <h2>WebRTC Video Meeting Application</h2>
+    <button onclick="createRoom()">Create New Room</button>
+    <br><br>
+    <p>Or join an existing room by entering a room ID:</p>
+    <input type="text" id="roomId" placeholder="Enter Room ID">
+    <button onclick="joinRoom()">Join Room</button>
+
+    <script>
+        // Generate a random room ID
+        function createRoom() {
+            const roomId = Math.floor(Math.random() * 1000000);
+            window.location.href = `/room/${roomId}`;
+        }
+
+        // Join a room by the provided ID
+        function joinRoom() {
+            const roomId = document.getElementById('roomId').value;
+            if (roomId) {
+                window.location.href = `/room/${roomId}`;
+            } else {
+                alert("Please enter a valid room ID.");
+            }
+        }
+    </script>
+</body>
+</html> -->
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- index.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DineshMeet - Video Chat Platform</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body class="bg-gradient-to-r from-purple-500 to-pink-500 min-h-screen">
+    <div class="container mx-auto px-4 py-16">
+        <div class="max-w-md mx-auto bg-white rounded-lg shadow-xl p-8">
+            <div class="text-center mb-8">
+                <h1 class="text-4xl font-bold text-gray-800 mb-2">DineshMeet</h1>
+                <p class="text-gray-600">Connect with anyone, anywhere</p>
+            </div>
+            
+            <div class="space-y-6">
+                <div class="space-y-4">
+                    <input type="text" id="userName" placeholder="Enter your name" 
+                           class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500">
+                    
+                    <button onclick="createRoom()" 
+                            class="w-full bg-purple-600 text-white py-2 rounded-lg hover:bg-purple-700 transition duration-200">
+                        <i class="fas fa-video mr-2"></i>Create New Meeting
+                    </button>
+                </div>
+                
+                <div class="relative">
+                    <div class="absolute inset-0 flex items-center">
+                        <div class="w-full border-t border-gray-300"></div>
+                    </div>
+                    <div class="relative flex justify-center text-sm">
+                        <span class="px-2 bg-white text-gray-500">or</span>
+                    </div>
+                </div>
+                
+                <div class="space-y-4">
+                    <input type="text" id="roomId" placeholder="Enter meeting code" 
+                           class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500">
+                    
+                    <button onclick="joinRoom()" 
+                            class="w-full bg-pink-600 text-white py-2 rounded-lg hover:bg-pink-700 transition duration-200">
+                        <i class="fas fa-sign-in-alt mr-2"></i>Join Meeting
+                    </button>
+                </div>
+            </div>
+            
+            <div class="mt-8 text-center text-sm text-gray-600">
+                Created with ❤️ by <a href="https://dineshsuthar.com" class="text-purple-600 hover:underline">dineshsuthar.com</a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function createRoom() {
+            const userName = document.getElementById('userName').value.trim();
+            if (!userName) {
+                alert('Please enter your name');
+                return;
+            }
+            window.location.href = `/create-room?name=${encodeURIComponent(userName)}`;
+        }
+
+        function joinRoom() {
+            const userName = document.getElementById('userName').value.trim();
+            const roomId = document.getElementById('roomId').value.trim();
+            
+            if (!userName || !roomId) {
+                alert('Please enter both your name and the meeting code');
+                return;
+            }
+            window.location.href = `/room/${roomId}?name=${encodeURIComponent(userName)}`;
+        }
+    </script>
+</body>
+</html>
